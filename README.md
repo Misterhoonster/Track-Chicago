@@ -1,6 +1,6 @@
-# transit_api_test
+# Track Chicago
 
-Testing the CTA Train and Bus Tracker APIs
+Flutter app which allows users to easily track arrival times for CTA buses and trains at stops of their choice.
 
 ## Getting Started
 
