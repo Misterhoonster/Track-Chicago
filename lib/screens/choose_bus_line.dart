@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:track_chicago/constants.dart';
 import 'package:track_chicago/models/networking.dart';
@@ -16,30 +14,6 @@ class BusLineScreen extends StatefulWidget {
 }
 
 class _BusLineScreenState extends State<BusLineScreen> {
-  SharedPreferences _sharedPreferences;
-  List<String> linesEncoded;
-
-  @override
-  void initState() {
-    initSharedPreferences();
-    super.initState();
-  }
-
-  Future<void> initSharedPreferences() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      linesEncoded = loadBusLines(_sharedPreferences);
-    });
-  }
-
-  Future<void> setBusLines() async {
-    await _sharedPreferences.setStringList('bus_lines', linesEncoded);
-  }
-
-  List<String> loadBusLines(SharedPreferences _sharedPreferences) {
-    return _sharedPreferences.getStringList('bus_lines');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,8 +45,7 @@ class _BusLineScreenState extends State<BusLineScreen> {
                 onPressed: () async {
                   Map<String, dynamic> searchPassBack = await showSearch(
                     context: context,
-                    delegate: BusLineSearch(
-                        Networking().getBusLinesStream(linesEncoded)),
+                    delegate: BusLineSearch(Networking().getBusLinesStream()),
                   );
 
                   if (searchPassBack != null) {
@@ -98,8 +71,8 @@ class _BusLineScreenState extends State<BusLineScreen> {
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: StreamBuilder<List>(
               initialData: [],
-              stream: Networking().getBusLinesStream(
-                  linesEncoded), // stream data to listen for change
+              stream: Networking()
+                  .getBusLinesStream(), // stream data to listen for change
               builder: (context, snapshot) {
                 Widget child;
                 if (snapshot.hasError) {
@@ -135,10 +108,7 @@ class _BusLineScreenState extends State<BusLineScreen> {
                     case ConnectionState.done:
                       List lines = snapshot.data;
                       child = BuildRoutesList(lines);
-                      linesEncoded =
-                          lines.map((item) => jsonEncode(item)).toList();
                       print('Done loading bus lines!');
-                      setBusLines();
                       break;
                   }
                 }
