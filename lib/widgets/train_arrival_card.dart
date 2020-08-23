@@ -64,12 +64,13 @@ class _TrainArrivalCardState extends State<TrainArrivalCard>
         });
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 12.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
           color: this.widget.color,
+          borderRadius: BorderRadius.circular(20.0),
         ),
+        margin: EdgeInsets.symmetric(vertical: 6.0),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Padding(
               padding:

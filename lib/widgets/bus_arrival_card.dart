@@ -65,7 +65,7 @@ class _BusArrivalCardState extends State<BusArrivalCard>
         });
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: 12.0),
+        margin: EdgeInsets.symmetric(vertical: 6.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           color: Colors.white,

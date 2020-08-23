@@ -87,6 +87,17 @@ class TrainStopData extends ChangeNotifier {
     notifyListeners();
   }
 
+  void reorderStops(int oldIndex, int newIndex) {
+    // if (newIndex > oldIndex) {
+    //   newIndex -= 1;
+    // }
+    TrainStop stop = _stops[oldIndex];
+    _stops.removeAt(oldIndex);
+    _stops.insert(newIndex, stop);
+    saveData();
+    notifyListeners();
+  }
+
   Future<void> refreshStops() async {
     Networking networking = Networking();
     List<List<String>> newArrivalData =
