@@ -88,9 +88,6 @@ class TrainStopData extends ChangeNotifier {
   }
 
   void reorderStops(int oldIndex, int newIndex) {
-    // if (newIndex > oldIndex) {
-    //   newIndex -= 1;
-    // }
     TrainStop stop = _stops[oldIndex];
     _stops.removeAt(oldIndex);
     _stops.insert(newIndex, stop);

@@ -68,13 +68,14 @@ class _TrainArrivalCardState extends State<TrainArrivalCard>
           color: this.widget.color,
           borderRadius: BorderRadius.circular(20.0),
         ),
-        margin: EdgeInsets.symmetric(vertical: 6.0),
+        margin: EdgeInsets.symmetric(
+          vertical: 6.0,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+              padding: const EdgeInsets.all(15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

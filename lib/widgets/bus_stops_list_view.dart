@@ -104,6 +104,24 @@ class _BusStopsListViewState extends State<BusStopsListView> {
                       onReorder: (int oldIndex, int newIndex) {
                         stopData.reorderStops(oldIndex, newIndex);
                       },
+                      buildDraggableFeedback: (BuildContext context,
+                          BoxConstraints constraints, Widget child) {
+                        return Transform(
+                          transform: Matrix4.rotationZ(0),
+                          alignment: FractionalOffset.topLeft,
+                          child: Material(
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                child: ConstrainedBox(
+                                    constraints: constraints, child: child)),
+                            elevation: 0.0,
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.zero,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
