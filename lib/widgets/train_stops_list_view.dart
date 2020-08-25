@@ -5,9 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:reorderables/reorderables.dart';
 
 import 'package:track_chicago/models/train_stop_data.dart';
-import 'package:track_chicago/models/flushbars.dart';
-import 'package:track_chicago/models/train_stop.dart';
-import 'package:track_chicago/widgets/train_arrival_card.dart';
+import 'package:track_chicago/widgets/arrival_list_tile.dart';
 import 'package:track_chicago/constants.dart';
 
 class TrainStopsListView extends StatefulWidget {
@@ -25,7 +23,7 @@ class _TrainStopsListViewState extends State<TrainStopsListView> {
     _refreshController = RefreshController(initialRefresh: true);
   }
 
-  List<Widget> buildListView(TrainStopData stopData) {
+  List<Widget> buildListView(TrainStopData stopData, BuildContext listContext) {
     List<Widget> tiles = [];
     stopData.stops.asMap().forEach((index, stop) {
       tiles.add(
@@ -33,6 +31,8 @@ class _TrainStopsListViewState extends State<TrainStopsListView> {
           data: stopData,
           index: index,
           key: UniqueKey(),
+          listContext: listContext,
+          isTrain: true,
         ),
       );
     });
@@ -99,7 +99,7 @@ class _TrainStopsListViewState extends State<TrainStopsListView> {
                 slivers: [
                   ReorderableSliverList(
                     delegate: ReorderableSliverChildListDelegate(
-                        buildListView(stopData)),
+                        buildListView(stopData, context)),
                     onReorder: (int oldIndex, int newIndex) {
                       stopData.reorderStops(oldIndex, newIndex);
                     },
@@ -126,57 +126,5 @@ class _TrainStopsListViewState extends State<TrainStopsListView> {
               ),
       );
     });
-  }
-}
-
-class ArrivalListTile extends StatelessWidget {
-  const ArrivalListTile({this.data, this.index, this.key});
-
-  final TrainStopData data;
-  final int index;
-  final Key key;
-
-  @override
-  Widget build(BuildContext context) {
-    TrainStop currentStop = data.stops[index];
-    return Dismissible(
-      key: UniqueKey(),
-      direction: DismissDirection.endToStart,
-      onDismissed: (direction) {
-        // Remove the item from the data source.
-        data.removeStop(index);
-        // Then show a snackbar.
-        displayRemovedFlushbar(
-            context: context, stop: currentStop, index: index, isTrain: true);
-      },
-      // Show a red background as the item is swiped away.
-      background: Container(
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        margin: const EdgeInsets.symmetric(vertical: 7.0),
-        child: Align(
-          alignment: Alignment.centerRight,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 30.0),
-            child: Text(
-              'Delete',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
-          ),
-        ),
-      ),
-      child: TrainArrivalCard(
-        name: currentStop.name,
-        direction: currentStop.direction,
-        arrivalTimes: currentStop.arrivalTimes,
-        color: currentStop.color,
-      ),
-    );
   }
 }
