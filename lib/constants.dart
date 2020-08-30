@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-const red = Color(0xFFC70E30);
-const blue = Color(0xFF00A2DE);
-const brown = Color(0xFF63361C);
-const green = Color(0xFF009B3A);
-const orange = Color(0xFFF9471B);
-const pink = Color(0xFFE37EA6);
-const purple = Color(0xFF522497);
-const yellow = Color(0xFFF9E400);
+const trainColors = {
+  "red": Color(0xFFC70E30),
+  "blue": Color(0xFF00A2DE),
+  "brown": Color(0xFF63361C),
+  "green": Color(0xFF009B3A),
+  "orange": Color(0xFFF9471B),
+  "pink": Color(0xFFE37EA6),
+  "purple": Color(0xFF522497),
+  "yellow": Color(0xFFF9E400),
+};
+
 const busBlue = Color(0xFF2066B1);
 
 const cardTitleTextStyle = TextStyle(

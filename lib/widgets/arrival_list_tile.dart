@@ -33,7 +33,7 @@ class ArrivalListTile extends StatelessWidget {
       // Show a red background as the item is swiped away.
       background: Container(
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: Colors.red[400],
           borderRadius: BorderRadius.circular(20.0),
         ),
         margin: const EdgeInsets.symmetric(vertical: 7.0),
@@ -42,10 +42,10 @@ class ArrivalListTile extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(right: 30.0),
             child: Text(
-              'Delete',
+              'delete',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 20.0,
+                fontSize: 18.0,
                 fontWeight: FontWeight.w300,
               ),
             ),

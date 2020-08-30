@@ -5,15 +5,16 @@ import 'package:track_chicago/screens/choose_train_stop_screen.dart';
 import 'package:track_chicago/models/train_line.dart';
 
 class TrainLineCard extends StatelessWidget {
-  final List<TrainLine> lines;
+  final List<TrainLine> line;
+  final Function close;
 
-  TrainLineCard({this.lines});
+  TrainLineCard({this.line, this.close});
 
   @override
   Widget build(BuildContext context) {
     List<Widget> buildTiles() {
-      return lines.map((item) {
-        return LineTile(line: item);
+      return line.map((item) {
+        return LineTile(line: item, close: close);
       }).toList();
     }
 
@@ -21,7 +22,7 @@ class TrainLineCard extends StatelessWidget {
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: this.lines[0].color,
+        color: this.line[0].color,
       ),
       child: Column(
         children: <Widget>[
@@ -29,7 +30,7 @@ class TrainLineCard extends StatelessWidget {
             contentPadding:
                 EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
             title: Text(
-              this.lines[0].name,
+              this.line[0].name,
               style: cardTitleTextStyle,
             ),
           ),
@@ -41,9 +42,10 @@ class TrainLineCard extends StatelessWidget {
 }
 
 class LineTile extends StatelessWidget {
-  LineTile({this.line});
+  LineTile({this.line, this.close});
 
   final TrainLine line;
+  final Function close;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +57,15 @@ class LineTile extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () async {
-            Map<String, dynamic> passBackData = await Navigator.push(context,
-                MaterialPageRoute(builder: (context) {
-              return TrainStopScreen(line);
-            }));
-            Navigator.pop(context, passBackData);
+            if (close != null) {
+              close(line);
+            } else {
+              Map<String, dynamic> passBackData = await Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
+                return TrainStopScreen(line);
+              }));
+              Navigator.pop(context, passBackData);
+            }
           },
           child: ListTile(
             contentPadding: EdgeInsets.only(left: 15.0),

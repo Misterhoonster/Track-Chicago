@@ -7,6 +7,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:track_chicago/api_key.dart';
 import 'package:track_chicago/models/train_stop.dart';
+import 'package:track_chicago/models/train_line.dart';
 import 'package:track_chicago/constants.dart';
 
 class Networking {
@@ -155,6 +156,34 @@ class Networking {
     return arrivalTimes;
   }
 
+  Stream<List> getTrainLinesStream() {
+    StreamController<List> _controller;
+
+    void getLines() async {
+      List linesList = TrainLineData().data;
+
+      _controller.add(linesList);
+      _controller.close();
+    }
+
+    _controller = BehaviorSubject(onListen: getLines);
+
+    return _controller.stream;
+  }
+
+  Stream<TrainLine> getTrainStopsStream(TrainLine line) {
+    StreamController<TrainLine> _controller;
+
+    void getLines() async {
+      _controller.add(line);
+      _controller.close();
+    }
+
+    _controller = BehaviorSubject(onListen: getLines);
+
+    return _controller.stream;
+  }
+
   Stream<List> getBusLinesStream() {
     StreamController<List> _controller;
 
@@ -185,63 +214,6 @@ class Networking {
 
     return _controller.stream;
   }
-  // Stream<List> getBusLinesStream(List<String> linesEncoded) {
-  //   StreamController<List> _controller;
-
-  //   //print(linesEncoded);
-
-  //   void getRoutes() async {
-  //     List routes = [];
-  //     String _routesURL =
-  //         'http://www.ctabustracker.com/bustime/api/v2/getroutes?key=$busKey&format=json';
-  //     String _directionsURL =
-  //         'http://www.ctabustracker.com/bustime/api/v2/getdirections?key=$busKey&format=json&rt=';
-  //     if (linesEncoded != null) {
-  //       routes = linesEncoded.map((item) => json.decode(item)).toList();
-  //       _controller.add(routes);
-  //     } else {
-  //       var routesResponse = await http.get(_routesURL);
-
-  //       if (routesResponse.statusCode == 200) {
-  //         var routesDecoded =
-  //             jsonDecode(routesResponse.body)['bustime-response']['routes'];
-  // for (var route in routesDecoded) {
-  //   String routeName = route['rtnm'];
-  //   String routeNum = route['rt'];
-  //   Map<String, dynamic> map = {};
-
-  //   var directionsResponse = await http.get(_directionsURL + routeNum);
-  //   if (directionsResponse.statusCode == 200) {
-  //     var directionsDecoded =
-  //         jsonDecode(directionsResponse.body)['bustime-response']
-  //             ['directions'];
-  //     List<String> directionsList = [];
-  //     for (var direction in directionsDecoded) {
-  //       directionsList.add(direction['dir']);
-  //     }
-  //     map['name'] = routeName;
-  //     map['number'] = routeNum;
-  //     map['directions'] = directionsList;
-
-  //     routes.add(map);
-  //     _controller.add(routes);
-  //   } else {
-  //     print(directionsResponse.statusCode);
-  //     throw "ERROR with request";
-  //   }
-  // }
-  //       } else {
-  //         print(routesResponse.statusCode);
-  //         throw "ERROR with request";
-  //       }
-  //     }
-  //     _controller.close();
-  //   }
-
-  //   _controller = BehaviorSubject(onListen: getRoutes);
-
-  //   return _controller.stream;
-  // }
 
   Stream<List<BusStop>> getBusStopsStream({String route, String direction}) {
     StreamController<List<BusStop>> _controller;

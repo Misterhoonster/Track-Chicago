@@ -20,7 +20,7 @@ class _TrainStopsListViewState extends State<TrainStopsListView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _refreshController = RefreshController(initialRefresh: true);
+    _refreshController = RefreshController(initialRefresh: false);
   }
 
   List<Widget> buildListView(TrainStopData stopData, BuildContext listContext) {

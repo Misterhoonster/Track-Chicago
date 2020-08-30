@@ -23,6 +23,7 @@ class TrainStopData extends ChangeNotifier {
     print('train init');
     loadData();
     notifyListeners();
+    await refreshStops();
   }
 
   void saveData() {

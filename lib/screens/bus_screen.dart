@@ -16,12 +16,6 @@ class BusScreen extends StatefulWidget {
 
 class _BusScreenState extends State<BusScreen> {
   @override
-  void initState() {
-    super.initState();
-    BusStopData();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -24,6 +24,7 @@ class BusStopData extends ChangeNotifier {
     print('bus init');
     loadData();
     notifyListeners();
+    await refreshStops();
   }
 
   void saveData() {

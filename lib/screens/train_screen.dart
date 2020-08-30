@@ -19,12 +19,6 @@ class TrainScreen extends StatefulWidget {
 }
 
 class _TrainScreenState extends State<TrainScreen> {
-  @override
-  void initState() {
-    super.initState();
-    TrainStopData();
-  }
-
   // UNCOMMENT TO CHECK STOPS
   // var badStops = [];
 

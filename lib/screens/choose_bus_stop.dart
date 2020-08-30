@@ -146,9 +146,9 @@ class BusStopSearch extends SearchDelegate<Map<String, dynamic>> {
             query = '';
           },
           child: Text(
-            'Clear',
+            'clear',
             style: TextStyle(
-              color: blue,
+              color: trainColors['blue'],
               fontSize: 20.0,
             ),
           ),
