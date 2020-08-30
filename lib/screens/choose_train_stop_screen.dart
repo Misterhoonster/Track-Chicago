@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:track_chicago/constants.dart';
 import 'package:track_chicago/models/train_line.dart';
 import 'package:track_chicago/widgets/train_stop_card.dart';
 import 'package:track_chicago/models/networking.dart';
-import 'package:track_chicago/models/train_stop_data.dart';
 
 class TrainStopScreen extends StatelessWidget {
   final TrainLine line;
