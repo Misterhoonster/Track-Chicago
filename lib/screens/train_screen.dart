@@ -23,6 +23,16 @@ class _TrainScreenState extends State<TrainScreen> {
   // var badStops = [];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<TrainStopData>(context, listen: false)
+          .initSharedPreferences();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

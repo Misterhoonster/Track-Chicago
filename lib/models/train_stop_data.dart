@@ -13,10 +13,6 @@ class TrainStopData extends ChangeNotifier {
   List<TrainStop> _stops = [];
   String _lastUpdated = DateFormat.jm().format(DateTime.now()).toLowerCase();
 
-  TrainStopData() {
-    initSharedPreferences();
-  }
-
   void initSharedPreferences() async {
     _sharedPreferences = await SharedPreferences.getInstance();
     // _sharedPreferences.clear();

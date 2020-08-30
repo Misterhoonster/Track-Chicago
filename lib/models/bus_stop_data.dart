@@ -14,14 +14,10 @@ class BusStopData extends ChangeNotifier {
 
   String _lastUpdated = DateFormat.jm().format(DateTime.now()).toLowerCase();
 
-  BusStopData() {
-    initSharedPreferences();
-  }
-
   void initSharedPreferences() async {
     _sharedPreferences = await SharedPreferences.getInstance();
     // _sharedPreferences.clear();
-    print('bus init');
+    print('bus data init');
     loadData();
     notifyListeners();
     await refreshStops();

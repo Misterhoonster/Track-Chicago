@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:track_chicago/models/bus_stop_data.dart';
 import 'package:track_chicago/models/train_stop_data.dart';
 import 'package:track_chicago/screens/bus_screen.dart';
 import 'package:track_chicago/screens/train_screen.dart';
+
+BusScreen busScreen = BusScreen();
+TrainScreen trainScreen = TrainScreen();
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -17,8 +22,6 @@ class _BottomNavBarState extends State<BottomNavBar>
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: 2);
-    BusStopData();
-    TrainStopData();
   }
 
   @override
