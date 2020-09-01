@@ -58,11 +58,6 @@ class TrainStopCard extends StatelessWidget {
                 line.direction,
                 style: cardSubtitleTextStyle,
               ),
-              trailing: Icon(
-                Icons.add,
-                size: 30.0,
-                color: Colors.white,
-              ),
             ),
           ],
         ),
