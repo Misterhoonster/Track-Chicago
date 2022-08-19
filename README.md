@@ -15,7 +15,7 @@ Easily track arrival times for Chicago buses and trains at your favorite stops!
 </div>
 <br />
 
-**Built with Flutter and Dart**
+Built with Flutter and Dart
 <br />
 <div class="inline-block">
   <a href="https://flutter.dev/"><img width="26px" src="https://user-images.githubusercontent.com/11368469/185697903-00862f66-34c4-4988-9348-a0c53ca5b9aa.png"></img></a>
