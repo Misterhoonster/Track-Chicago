@@ -15,7 +15,7 @@ Easily track arrival times for Chicago buses and trains at your favorite stops!
 </div>
 <br />
 
-**Built with Flutter and Dart.**
+**Built with Flutter and Dart**
 <br />
 <div class="inline-block">
   <a href="https://flutter.dev/"><img width="26px" src="https://user-images.githubusercontent.com/11368469/185697903-00862f66-34c4-4988-9348-a0c53ca5b9aa.png"></img></a>
@@ -23,15 +23,19 @@ Easily track arrival times for Chicago buses and trains at your favorite stops!
 </div>
 <br />
 
-## Getting Started
+## Features ⚡
 
-This project is a starting point for a Flutter application.
+### Add a train stop
+<img src="https://user-images.githubusercontent.com/11368469/185708007-af7ccd6b-75de-451f-b7d3-6103ca10206e.gif" width="200px"></img>
 
-A few resources to get you started if this is your first Flutter project:
+### Add a bus stop
+<img src="https://user-images.githubusercontent.com/11368469/185708046-017f880d-0c38-4423-9f99-aa05d7f1a869.gif" width="200px"></img>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Remove a stop
+<img src="https://user-images.githubusercontent.com/11368469/185708540-2b07cb50-15b9-4105-8068-4ada3ea527a8.gif" width="200px"></img>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Refresh arrival times
+<img src="https://user-images.githubusercontent.com/11368469/185708562-c5cc10a6-9907-42e5-9189-f11a0d50cc4c.gif" width="200px"></img>
+
+### Re-order stops
+<img src="https://user-images.githubusercontent.com/11368469/185708598-2c871c52-d9b0-44bf-b3e0-0e2b633b588b.gif" width="200px"></img>
