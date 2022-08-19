@@ -1,6 +1,15 @@
 # Track Chicago
 
-Flutter app which allows users to easily track arrival times for CTA buses and trains at stops of their choice.
+<div class="inline-block">
+  <a href="https://flutter.dev/"><img width="26px" src="https://user-images.githubusercontent.com/11368469/185697903-00862f66-34c4-4988-9348-a0c53ca5b9aa.png"></img></a>
+  <a href="https://dart.dev/"><img width="26px" src="https://user-images.githubusercontent.com/11368469/185697965-f6095c9e-79cb-4786-aabe-a0146f318281.png"></img></a>
+</div>
+<br />
+
+Easily track arrival times for Chicago buses and trains at your favorite stops!
+<br />
+
+Built with Flutter and Dart.
 
 ## Getting Started
 
